@@ -9,11 +9,14 @@ First, make your virtualenv by running
 `
 
 Second, activate your virtualenv by running
+
 `
   /path/to/virtualenv/bin/activate
 `
+
 Third, set up your firebase account and add the config object to your project in two places
-`
+
+```javascript
   app/static/js/secrets.js
   ---
   const config = {
@@ -26,9 +29,10 @@ Third, set up your firebase account and add the config object to your project in
     appId: "YOUR-APP-ID",
     measurementId: "YOUR-MEASUREMENT-ID"
   };
-`
+```
+and
 
-`
+```python
   secrets.py
   ---
   config = {
@@ -40,8 +44,8 @@ Third, set up your firebase account and add the config object to your project in
     "messagingSenderId": "YOUR-MESSAGING-SENDER-ID",
     "appId": "YOUR-APP-ID",
     "measurementId": "YOUR-MEASUREMENT-ID"
-  };
-`
+  }
+```
 
 
 Lastly, install all the dependencies by running
