@@ -1,0 +1,2 @@
+FLASK_APP=samplepwa.py
+FLASK_DEBUG=1

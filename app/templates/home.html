@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block head_extension %}
+{{ map.js }}
+{% endblock head_extension %}
+
+
+{% block content %}
+<div id="map">
+    {{ map.html }}
+</div>
+{% endblock %}

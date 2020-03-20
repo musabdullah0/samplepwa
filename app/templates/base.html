@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sample PWA</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <title>Sample PWA{% if title%} - {{ title }}{% endif %}</title>
+    {% block head_extension %}
+    {% endblock head_extension %}
+</head>
+
+<body>
+    {% block content %}
+    {% endblock %}
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-auth.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAjD_4z3oC3J0LedswgDmTXILI2dWzDcQ4",
+            authDomain: "moose-sample-pwa.firebaseapp.com",
+            databaseURL: "https://moose-sample-pwa.firebaseio.com",
+            projectId: "moose-sample-pwa",
+            storageBucket: "moose-sample-pwa.appspot.com",
+            messagingSenderId: "960867862502",
+            appId: "1:960867862502:web:26d749e76cf7946b833827",
+            measurementId: "G-NSZWYWHJZD"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+</body>
+
+</html>
