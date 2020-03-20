@@ -2,18 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect
 from app import app
 import pyrebase
 from app.mapper import map
-import sys
-
-config = {
-    "apiKey": "AIzaSyAjD_4z3oC3J0LedswgDmTXILI2dWzDcQ4",
-    "authDomain": "moose-sample-pwa.firebaseapp.com",
-    "databaseURL": "https://moose-sample-pwa.firebaseio.com",
-    "projectId": "moose-sample-pwa",
-    "storageBucket": "moose-sample-pwa.appspot.com",
-    "messagingSenderId": "960867862502",
-    "appId": "1:960867862502:web:26d749e76cf7946b833827",
-    "measurementId": "G-NSZWYWHJZD"
-}
+from secrets import config
 
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
@@ -22,7 +11,6 @@ auth = firebase.auth()
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    print('This is standard output', file=sys.stdout)
     if (request.method == 'POST'):
         email = request.form['name']
         password = request.form['password']

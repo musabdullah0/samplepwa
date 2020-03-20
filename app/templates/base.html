@@ -23,18 +23,9 @@
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-auth.js"></script>
+    <script src="{{ url_for('static', filename='js/secrets.js') }}"></script>
     <script>
         // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAjD_4z3oC3J0LedswgDmTXILI2dWzDcQ4",
-            authDomain: "moose-sample-pwa.firebaseapp.com",
-            databaseURL: "https://moose-sample-pwa.firebaseio.com",
-            projectId: "moose-sample-pwa",
-            storageBucket: "moose-sample-pwa.appspot.com",
-            messagingSenderId: "960867862502",
-            appId: "1:960867862502:web:26d749e76cf7946b833827",
-            measurementId: "G-NSZWYWHJZD"
-        };
         firebase.initializeApp(config);
         const db = firebase.firestore();
         const auth = firebase.auth();
