@@ -10,5 +10,5 @@ NOTES/ISSUES
  TODO:
  - use location to center map and add blue dot if not there already
  - push location to database and pull all other data with red markers
- - can't use auth.currentUser, need to listen to onAuthStateChanged 
+ - can't use auth.currentUser, need to listen to onAuthStateChanged
 '''

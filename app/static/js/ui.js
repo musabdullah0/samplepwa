@@ -1,38 +1,14 @@
-// gets latlang of user
+// gets position of user
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        const options = { enableHighAccuracy: true }
+        return new Promise((res, rej) => {
+            navigator.geolocation.getCurrentPosition(res, rej, options);
+        });
     } else {
         console.log("Geo Location not supported by browser");
     }
 }
-
-// helper for getLocation
-function showPosition(position) {
-    var location = {
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude
-    }
-    console.log(location)
-}
-
-//request for location
-function getLocationWrapper() {
-    return new Promise(() => {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    });
-}
-
-
-// initialize google maps object
-let initializeMap = () => {
-    let mapProp = {
-        center: new google.maps.LatLng(30.565990399999993, -97.64536319999999),
-        zoom: 5
-    }
-    let map = new google.maps.Map(document.getElementById('myMap'), mapProp)
-}
-
 
 // add user to map
 // update to put blue marker if same as auth user
@@ -62,9 +38,12 @@ db.collection('users').onSnapshot(snapshot => {
 });
 
 // get location then move map to center at it
-// getLocationWrapper().then(pos => {
-//     console.log('got new center');
-//     const latlang = new google.maps.LatLng(pos.latitude, pos.longitude);
-//     map.setCenter(latlang);
-//     console.log('new center at', latlang);
-// });
+async function centerMap() {
+    const pos = await getLocation();
+    const lat = pos.coords.latitude;
+    const long = pos.coords.longitude;
+    const latlang = new google.maps.LatLng(lat, long);
+    map.setCenter(latlang);
+    console.log('new center at', latlang);
+}
+centerMap();
