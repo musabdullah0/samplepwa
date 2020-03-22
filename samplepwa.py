@@ -8,7 +8,21 @@ NOTES/ISSUES
  - kinda jank that we intialize firebase twice
 
  TODO:
- - use location to center map and add blue dot if not there already
- - push location to database and pull all other data with red markers
- - can't use auth.currentUser, need to listen to onAuthStateChanged
+ - database structure:
+    - users
+        - name
+        - email
+        - friends (later)
+    - sessions
+        - email_of_student
+        - latitude
+        - longitude
+        - location_description (later)
+        - start_time (later)
+        - duration (later)
+ - add blue dot at current location, allow user to move it elsewhere
+ - when user starts a session, add it to database
+ - all other users take snapshot of change and have red marker on their screen
+ - marker should have a popup that fills screen with info abt session
+ - do we rlly need firebase auth anymore? just using oauth2 and RealtimeDB
 '''
